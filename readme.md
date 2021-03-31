@@ -7,3 +7,5 @@ Requirements
 Debian|Linux: GCC/G++
 
 Windows: Not compilable on Windows (yet!)
+
+Also note: This is designed to ONLY run on Linux! Windows builds will arrive at some point.
