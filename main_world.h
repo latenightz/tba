@@ -44,7 +44,8 @@ void sell(string item2sell) {
 
 }
 
-void world() {
+void world(string planetname) {                     
+
 	string cmdinput; // For Command-Input interpretation
 	while (1) {
 	// Read inventory files
@@ -53,13 +54,18 @@ void world() {
         (istreambuf_iterator<char>()    ) );
 	ifstream applefile("apples.txt");
         string applecount( (istreambuf_iterator<char>(applefile) ),
-        (istreambuf_iterator<char>()    ) );
+        (istreambuf_iterator<char>()    ) );                       
+	ifstream worldfile("world.txt");                          
+	string worldname( (istreambuf_iterator<char>(worldfile) ),
+	(istreambuf_iterator<char>()    ) );                      
+	string planet = worldname;                                                          
 
-	cout << "planet:earth. money:" << moneycount  << "> ";
+
+	cout << "planet:" << planet << "; money:" << moneycount  << "> ";
 	cin >> cmdinput;
 
         if (cmdinput == "help") {
-                cout << "COMMAND LIST\nhelp - Displays this list of commands\ninv - Shows the items in your inventory; e.g. money\nsell - Sell your apples for money";
+                cout << "COMMAND LIST\nhelp - Displays this list of commands\ninv - Shows the items in your inventory; e.g. money\nsell - Sell your apples for money\nportal - go to the underworld!\n";
         } else if (cmdinput == "inv") {
 		cout << "== Inventory Contains ==\n";
 		cout << "Money: " << moneycount << "\n";
@@ -67,6 +73,17 @@ void world() {
 
         } else if (cmdinput == "sell") {
 		sell("apple");
+	} else if (cmdinput == "portal") {
+		if (planet == "earth_underworld") {
+			ofstream portalstatfile("world.txt");
+			portalstatfile << "earth";
+			portalstatfile.close();              
+
+		} else {
+			ofstream portalstatfile("world.txt");
+			portalstatfile << "earth_underworld";    
+			portalstatfile.close();              
+		}
 	} else {
 		cout << "error: fatal: '" << cmdinput << "' is not a command.\n";
 	}

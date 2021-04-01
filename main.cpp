@@ -25,11 +25,19 @@ void newgame() {
 	moneyfile << "5";
 	moneyfile.close();
 
-	world();
+	ofstream worldstat("world.txt");
+	worldstat << "earth";
+	worldstat.close();
+
+	world("earth");
 }
 
 void loadgame() {
-	world();
+	ifstream worldstatread("world.txt");
+	string worldstatus( (istreambuf_iterator<char>(worldstatread) ),
+	(istreambuf_iterator<char>()    ) );
+
+	world(worldstatus);
 }
 
 int main() {
@@ -40,7 +48,7 @@ int main() {
 	cout << arrayNum[RandIndex] << "\n";
 	
 	string gamechoice;
-	string version = "pre-alpha 1";
+	string version = "pre-alpha 2";
 	cout << "TBA " << version << "\nType 1 to start a new savegame; Type 2 to load a savegame.\n";
 	cin >> gamechoice;
 
