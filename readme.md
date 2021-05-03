@@ -1,3 +1,5 @@
+** Urgent note: TBA is no longer an active project. Fork it if you want to make it your own! It's all yours now. **
+
 Latest version stat: `pre-alpha 1`
 
 IRC Channel: #tba-dev on Freenode
